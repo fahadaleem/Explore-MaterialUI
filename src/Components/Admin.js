@@ -10,8 +10,8 @@ import Typography from '@material-ui/core/Typography'
 
 class Admin extends React.Component {
   render() {
-    const { employeeData } = this.props;
-    console.log(employeeData);
+    console.log(this.props)
+    const { employeeData, handleSetemployeeDetails, handleGenerateId } = this.props;
     return (
       <Container maxWidth="lg">
         <Box my={2}>
@@ -22,7 +22,7 @@ class Admin extends React.Component {
             <Grid item lg={6} xs={12}>
               <Box component={Paper} p={2} elevation={3}>
               <Typography variant="h4" color="initial" align="center">Add Details Of Employee</Typography>
-              <AddDetailsForm />
+              <AddDetailsForm handleSetEmployeeDetails={handleSetemployeeDetails} handleGenerateId={handleGenerateId} />
               </Box>
             </Grid>
           </Grid>

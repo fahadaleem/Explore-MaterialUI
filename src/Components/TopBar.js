@@ -4,9 +4,21 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Button from '@material-ui/core/Button'
+import Box from '@material-ui/core/Box'
+
+class TopBar extends React.Component{
 
 
-const TopBar = ()=> {
+  handleLogOutAdmin = ()=>{
+    const {handleLogOut} = this.props;
+
+    handleLogOut();
+  }
+
+  render(){
+
+
     return (
       <div className="App">
         <AppBar position="static" color="secondary">
@@ -15,11 +27,17 @@ const TopBar = ()=> {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6">Admin Panel</Typography>
+               <Box ml="auto">
+               <Button color="inherit" size="large" onClick={this.handleLogOutAdmin}>Logout</Button>
+               </Box>
           </Toolbar>
+         
         </AppBar>
-      </div>
-    );
+      </div>)
   }
-  
+}
+
+
+
   export default TopBar;
   

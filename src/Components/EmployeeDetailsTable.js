@@ -9,9 +9,18 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import Button from '@material-ui/core/Button'
+import EditIcon from '@material-ui/icons/Edit';
 
 
 class EmployeeDetailsTable extends React.Component{
+
+
+    handleDeleteEmploye = (id)=>{
+        return id;
+    }
+
+
     render(){
         const {employeeData} = this.props;
        return(
@@ -24,6 +33,7 @@ class EmployeeDetailsTable extends React.Component{
                     <TableCell>Email</TableCell>
                     <TableCell>PhoneNo</TableCell>
                     <TableCell>Salary</TableCell>
+                    <TableCell>Actions</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -35,6 +45,16 @@ class EmployeeDetailsTable extends React.Component{
                             <TableCell>{data.Email}</TableCell>
                             <TableCell>{data.Phone}</TableCell>
                             <TableCell>{data.Salary}</TableCell>
+                            <TableCell>
+                                <Button
+                                  variant="contained"
+                                  color="primary"
+                                  startIcon={<EditIcon />}
+                                >
+                                  
+                                </Button>
+                            </TableCell>
+
                         </TableRow>
                     )
                 })}

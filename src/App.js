@@ -24,41 +24,50 @@ class App extends React.Component {
       isLogin:false,
       isCredentialsMatched:true,
       employeeData:[
-        {
-          SNO:1,
-          Name: "Muhammad Fahad Aleem",
-          Email:"faleem396@gmail.com",
-          Phone:"03126036048",
-          Salary:"123612"
-        },
-        {
-          SNO:2,
-          Name: "Muhammad Asaad",
-          Email:"asad12@gmail.com",
-          Phone:"0126171221",
-          Salary:"12362"
-        }
       ]
     }
   }
 
+
+
+  handleSetemployeeDetails = (data)=>{
+    this.setState({
+      employeeData:[...this.state.employeeData,data]
+    })
+   
+    return true;
+  }
+
   componentDidMount(){
     this.setState({
-      isLogin:window.localStorage.getItem("isLogin")
+      isLogin:window.localStorage.getItem("isLogin"),
+      employeeData:JSON.parse(window.localStorage.getItem("employeeData"))
     })
+
+
   }
 
-  componentWillUnmount(){
-    
+  componentDidUpdate(){
+    const savedData = JSON.stringify(this.state.employeeData)
+    window.localStorage.setItem("employeeData", savedData)
   }
-
 
   handleSetLogin = ()=>{
     this.setState({
       isLogin:true,
     })
 
-    window.localStorage.setItem("isLogin","true");
+    window.localStorage.setItem("isLogin",true);
+
+  }
+
+  handleLogOut = ()=>{
+    this.setState({
+      isLogin:false
+    })
+    window.localStorage.setItem("isLogin",false);
+
+
   }
 
   handleSetIsCredentialsMatched = ()=>{
@@ -68,11 +77,23 @@ class App extends React.Component {
   }
 
 
+  handleGenerateId = ()=>{
+
+    if(this.state.employeeData.length===0)
+    {
+      return 1
+    }
+
+    const lastSNO = this.state.employeeData[this.state.employeeData.length-1].SNO;
+    return lastSNO+1;
+  }
+
+
   render(){
     return (
       <div className="App">
-       <TopBar />
-      {this.state.isLogin?<Admin employeeData = {this.state.employeeData}/>: <Box my={4}>
+       <TopBar handleLogOut={this.handleLogOut}/>
+      {this.state.isLogin?<Admin employeeData = {this.state.employeeData} handleSetemployeeDetails={this.handleSetemployeeDetails} handleGenerateId={this.handleGenerateId}/>: <Box my={4}>
       <Container maxWidth="sm">
       <Paper square={true} elevation={3}>
             <Box p={5}>
