@@ -41,7 +41,7 @@ class App extends React.Component {
   componentDidMount(){
     this.setState({
       isLogin:window.localStorage.getItem("isLogin"),
-      employeeData:employeeData:JSON.parse(window.localStorage.getItem("employeeData"))?JSON.parse(window.localStorage.getItem("employeeData")):[]
+      employeeData:JSON.parse(window.localStorage.getItem("employeeData"))?JSON.parse(window.localStorage.getItem("employeeData")):[]
     })
 
 
