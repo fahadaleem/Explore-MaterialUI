@@ -11,6 +11,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import Button from '@material-ui/core/Button'
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 
 class EmployeeDetailsTable extends React.Component{
@@ -46,13 +47,8 @@ class EmployeeDetailsTable extends React.Component{
                             <TableCell>{data.Phone}</TableCell>
                             <TableCell>{data.Salary}</TableCell>
                             <TableCell>
-                                <Button
-                                  variant="contained"
-                                  color="primary"
-                                  startIcon={<EditIcon />}
-                                >
-                                  
-                                </Button>
+
+                             
                             </TableCell>
 
                         </TableRow>

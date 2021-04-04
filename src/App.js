@@ -91,6 +91,23 @@ class App extends React.Component {
   }
 
 
+  handleEditDetails = (id)=>{
+   const DataObj =  this.state.employeeData.filter(data=>{
+      if(data.SNO)
+      {
+        return {
+          name:data.Name,
+          email:data.Email,
+          phone:data.Phone,
+          salary:data.Salary
+        }
+      }
+    })
+
+    
+  }
+
+
   render(){
     return (
       <div className="App">
