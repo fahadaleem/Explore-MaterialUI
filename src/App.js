@@ -45,6 +45,8 @@ class App extends React.Component {
     })
 
 
+
+
   }
 
   componentDidUpdate(){
@@ -86,6 +88,23 @@ class App extends React.Component {
 
     const lastSNO = this.state.employeeData[this.state.employeeData.length-1].SNO;
     return lastSNO+1;
+  }
+
+
+  handleEditDetails = (id)=>{
+   const DataObj =  this.state.employeeData.filter(data=>{
+      if(data.SNO)
+      {
+        return {
+          name:data.Name,
+          email:data.Email,
+          phone:data.Phone,
+          salary:data.Salary
+        }
+      }
+    })
+
+    
   }
 
 
