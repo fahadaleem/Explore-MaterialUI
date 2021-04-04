@@ -93,6 +93,7 @@ class LoginForm extends React.Component {
                         color: "#4E9EC6",
                       },
                     }}
+                    type="password"
                     onChange={setPassword}
                   />
                 </Grid>

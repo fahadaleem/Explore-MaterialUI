@@ -24,6 +24,7 @@ class NewProject extends React.Component {
       this.setState({
         isUserLogin: true,
       });
+      window.localStorage.setItem("isUserLogin", true)
     }
   };
 
@@ -76,6 +77,14 @@ class NewProject extends React.Component {
 
     });
   };
+
+
+  componentDidMount=()=>{
+    this.setState({
+        isUserLogin:window.localStorage.getItem("isUserLogin")
+    })
+
+}
 
   render() {
     return (
