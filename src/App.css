@@ -14,9 +14,3 @@ body{
   border-bottom: 2px solid #4E9EC6 !important;
 }
 
-
-.custom-inputs::after
-{
-  border-bottom: 2px solid #4E9EC6 !important;
-
-}

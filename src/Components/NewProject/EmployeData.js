@@ -19,7 +19,7 @@ const styles = {
 class EmployeeData extends React.Component {
   render() {
 
-    const {employeeData, handleOpenAddNewForm} = this.props;
+    const {employeeData, handleOpenAddNewForm, handleDeleteEmployee, handleEditData} = this.props;
     const {addNewBtn} = styles
 
     return (
@@ -40,7 +40,7 @@ class EmployeeData extends React.Component {
               Add New Employee
             </Button>
           </Box>
-            <EmployeeDataTable employeeData={employeeData}/>
+            <EmployeeDataTable handleOpenAddNewForm={handleOpenAddNewForm} employeeData={employeeData} handleEditData={handleEditData} handleDeleteEmployee={handleDeleteEmployee}/>
           </Box>
       </Container>
     );

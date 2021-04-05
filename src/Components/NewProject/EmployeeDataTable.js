@@ -22,7 +22,7 @@ const styles = {
 
 class EmployeeDataTable extends React.Component {
   render() {
-    const {employeeData} = this.props;
+    const {employeeData, handleDeleteEmployee, handleEditData, handleOpenAddNewForm} = this.props;
 
     const {thead, tableCellData} = styles;
 
@@ -42,17 +42,22 @@ class EmployeeDataTable extends React.Component {
           <TableBody>
             {employeeData.map((data, index) => {
               return (
-                <TableRow>
+                <TableRow key={index}>
                   <TableCell>{data.sNo}</TableCell>
                   <TableCell>{data.name}</TableCell>
                   <TableCell>{data.email}</TableCell>
                   <TableCell>{data.phone}</TableCell>
                   <TableCell>{data.salary}</TableCell>
                   <TableCell>
-                    <IconButton>
+                    <IconButton onClick={()=>{
+                        handleDeleteEmployee(data.sNo)
+                    }}>
                       <DeleteIcon />
                     </IconButton>
-                    <IconButton>
+                    <IconButton onClick={()=>{
+                      handleOpenAddNewForm()
+                      handleEditData(data.sNo)
+                    }}>
                       <EditIcon />
                     </IconButton>
                   </TableCell>

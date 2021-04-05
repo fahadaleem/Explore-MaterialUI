@@ -11,6 +11,9 @@ const styles = {
     topBar: {
       backgroundColor: "#4E9EC6",
     },
+    adminLabel:{
+        color:"white"
+    }
   };
   class TopAppBar extends React.Component {
 
@@ -18,11 +21,11 @@ const styles = {
     render() {
     const {handleLogOut} = this.props;
 
-      const { topBar } = styles;
+      const { topBar, adminLabel } = styles;
       return (
         <AppBar position="static" style={topBar}>
           <Toolbar justify="space-between">
-            <Typography variant="h5">Admin Panel</Typography>
+            <Typography variant="h5" style={adminLabel}>Admin Panel</Typography>
             <Box ml="auto">
               <Button
                 variant="contained"

@@ -11,24 +11,31 @@ class Admin extends React.Component {
     {
         super(props)
         this.state = {
-            isOpenAddNewForm:false
+            isOpenAddNewForm:false,
+            isEdit:false
         }
     }
 
-    handleOpenAddNewForm = (e)=>{
+    handleToggleAddNewForm = (e)=>{
         this.setState({
-            isOpenAddNewForm:true
+            isOpenAddNewForm:!this.state.isOpenAddNewForm
         })
+
+        const {removedEditTextFieldsData} = this.props;
+        removedEditTextFieldsData();
     }
 
+  
+   
+
   render() {
-      const {handleLogOut, employeeData} = this.props
+      const {handleLogOut, employeeData, handleSetData, handleDeleteEmployee, EditEmployeFormFields, handleEditData, handleSubmitEditData, isEdit } = this.props
 
     return (
      <div>
      <TopAppBar handleLogOut={handleLogOut}/>
      {
-         this.state.isOpenAddNewForm?<AddNewForm />:<EmployeeData employeeData={employeeData} handleOpenAddNewForm={this.handleOpenAddNewForm}/>
+         this.state.isOpenAddNewForm?<AddNewForm handleSetData = {handleSetData} EditEmployeFormFields={EditEmployeFormFields} isEdit = {isEdit} handleSubmitEditData={handleSubmitEditData} handleHideForm = {this.handleToggleAddNewForm} />:<EmployeeData employeeData={employeeData} handleOpenAddNewForm={this.handleToggleAddNewForm} handleEditData={handleEditData} handleDeleteEmployee = {handleDeleteEmployee}/>
      }
      </div>
     );
