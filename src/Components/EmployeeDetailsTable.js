@@ -17,10 +17,6 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 class EmployeeDetailsTable extends React.Component{
 
 
-    handleDeleteEmploye = (id)=>{
-        return id;
-    }
-
 
     render(){
         const {employeeData} = this.props;
@@ -47,10 +43,10 @@ class EmployeeDetailsTable extends React.Component{
                             <TableCell>{data.Phone}</TableCell>
                             <TableCell>{data.Salary}</TableCell>
                             <TableCell>
-
-                             
+                                <EditIcon />
+                                <DeleteForeverIcon />
+                                hello
                             </TableCell>
-
                         </TableRow>
                     )
                 })}

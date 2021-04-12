@@ -2,14 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
-import NewProject from "./NewProject"
+// import NewProject from "./NewProject"
+import FuntoonApp from "./Funtoon"
+import {BrowserRouter as Router} from "react-router-dom"
+
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <NewProject />
-  </React.StrictMode>,
+  <Router>
+    <FuntoonApp />
+    </Router>,
   document.getElementById('root')
 );
 

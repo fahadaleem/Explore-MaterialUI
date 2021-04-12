@@ -1,22 +1,45 @@
-import React from "react"
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+import React from "react";
+import TopAppBar from "./TopAppBar"
+import EmployeeData from "./EmployeData"
+import AddNewForm from "./AddNewForm"
 
 
-class Admin extends React.Component{
-    render(){
-        return(
-            <AppBar position="fixed" color="primary">
-              <Toolbar>
-                <Typography variant="h6">
-                  Hello world
-                </Typography>
-              </Toolbar>
-            </AppBar>
-        )
+class Admin extends React.Component {
+
+
+    constructor(props)
+    {
+        super(props)
+        this.state = {
+            isOpenAddNewForm:false,
+            isEdit:false
+        }
     }
+
+    handleToggleAddNewForm = (e)=>{
+        this.setState({
+            isOpenAddNewForm:!this.state.isOpenAddNewForm
+        })
+
+        const {removedEditTextFieldsData} = this.props;
+        removedEditTextFieldsData();
+    }
+
+  
+   
+
+  render() {
+      const {handleLogOut, employeeData, handleSetData, handleDeleteEmployee, EditEmployeFormFields, handleEditData, handleSubmitEditData, isEdit } = this.props
+
+    return (
+     <div>
+     <TopAppBar handleLogOut={handleLogOut}/>
+     {
+         this.state.isOpenAddNewForm?<AddNewForm handleSetData = {handleSetData} EditEmployeFormFields={EditEmployeFormFields} isEdit = {isEdit} handleSubmitEditData={handleSubmitEditData} handleHideForm = {this.handleToggleAddNewForm} />:<EmployeeData employeeData={employeeData} handleOpenAddNewForm={this.handleToggleAddNewForm} handleEditData={handleEditData} handleDeleteEmployee = {handleDeleteEmployee}/>
+     }
+     </div>
+    );
+  }
 }
 
-
-export default Admin
+export default Admin;
